@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="4of-DF-LSF">
-                                <rect key="frame" x="20" y="40" width="335" height="96.5"/>
+                                <rect key="frame" x="20" y="40" width="335" height="439.5"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Meal Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uq7-8j-khO">
                                         <rect key="frame" x="0.0" y="0.0" width="86.5" height="20.5"/>
@@ -43,8 +44,19 @@
                                             <action selector="setDefaultLabelText:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1rN-Mt-dEA"/>
                                         </connections>
                                     </button>
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="320" placeholderIntrinsicHeight="320" image="defaultPhoto.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="MDS-yQ-b7N">
+                                        <rect key="frame" x="0.0" y="104.5" width="335" height="335"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="MDS-yQ-b7N" secondAttribute="height" multiplier="1:1" id="BHC-FJ-EN0"/>
+                                        </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="HC8-8A-1DE" appends="YES" id="SIY-gc-uZL"/>
+                                        </connections>
+                                    </imageView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="MDS-yQ-b7N" secondAttribute="trailing" id="HdZ-F5-6t7"/>
                                     <constraint firstAttribute="trailing" secondItem="uYj-Oa-E3P" secondAttribute="trailing" id="RRO-tL-mdQ"/>
                                 </constraints>
                             </stackView>
@@ -60,11 +72,20 @@
                     <connections>
                         <outlet property="mealNameLabel" destination="Uq7-8j-khO" id="ukK-BF-pb1"/>
                         <outlet property="nameTextField" destination="uYj-Oa-E3P" id="yPb-WD-DEl"/>
+                        <outlet property="photoImageView" destination="MDS-yQ-b7N" id="Wmg-Lu-gqj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HC8-8A-1DE">
+                    <connections>
+                        <action selector="selectImageFromPhotoLibrary:" destination="BYZ-38-t0r" id="7FB-mV-bdd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="22" y="42"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="defaultPhoto.jpg" width="650" height="495"/>
+    </resources>
 </document>
