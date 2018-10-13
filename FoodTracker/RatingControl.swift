@@ -8,12 +8,14 @@
 
 import UIKit
 
-class RatingControl: UIStackView {
+@IBDesignable class RatingControl: UIStackView {
     //MARK: Properties
     private var pressCount: Int = 0;
     // List of buttons
     private var ratingButtons = [UIButton]()
     var rating = 0
+    @IBInspectable var starSize: CGSize = CGSize(width: 44.0, height: 44.0)
+    @IBInspectable var StarCount: Int = 5
     
     //MARK: Initialization
     // This initializer is used during design, programatically
@@ -37,21 +39,25 @@ class RatingControl: UIStackView {
     //MARK: Private Methods
     // Make sure the butons are added regardless of which initializer is called. Call this from both initializers.
     private func setupButtons() {
-        let button = UIButton()
-        button.backgroundColor = UIColor.blue
-        // Constraints
-        // Disable the button's automatically generated constraints
-        button.translatesAutoresizingMaskIntoConstraints = false
-        // replace these constraints with our own since we're using Auto Layout
-        button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
-        button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
-        
-        // Setup the buton action
-        button.addTarget(self, action:
-            #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
-        
-        // Add thebutton to the stack
-        addArrangedSubview(button)
+        for _ in 0..<5 {
+            let button = UIButton()
+            button.backgroundColor = UIColor.blue
+            // Constraints
+            // Disable the button's automatically generated constraints
+            button.translatesAutoresizingMaskIntoConstraints = false
+            // replace these constraints with our own since we're using Auto Layout
+            button.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
+            button.widthAnchor.constraint(equalToConstant: 44.0).isActive = true
+            
+            // Setup the buton action
+            button.addTarget(self, action:
+                #selector(RatingControl.ratingButtonTapped(button:)), for: .touchUpInside)
+            
+            // Add thebutton to the stack
+            addArrangedSubview(button)
+            ratingButtons.append(button)
+        }
+
     }
     
     
