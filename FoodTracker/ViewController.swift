@@ -14,6 +14,7 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var mealNameLabel: UILabel!
     @IBOutlet weak var photoImageView: UIImageView!
+    @IBOutlet weak var ratingControl: RatingControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -78,13 +79,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
         // Implicitly called on 'self' - asks ViewController to present the view controller defined by imagePickerController
         // Completion parameter refers to a 'completion handler' - a piece of code that executes after this method completes, sort of like  a callback, which is left nil for our case.
         present(imagePickerController, animated: true, completion: nil)
-    }
-    
-  
-    
-    
-    @IBAction func setDefaultLabelText(_ sender: UIButton) {
-        mealNameLabel.text = "Default Text"
     }
 }
 
